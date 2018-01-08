@@ -1,0 +1,23 @@
+<% if home_page? %>
+  <div class="col-xs-12 col-sm-3">
+    <div class="why-tma-item">
+      <%= link_to pod.url do %>
+        <% if pod.image.present? %>
+          <%= image_fu pod.image, '85x85#c' %>
+        <% end %>
+        <h3><%= pod.name %></h3>
+          <%=raw truncate(pod.body, :length => 60, :omission => "...") %>
+        <div>Find out more ></div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="side-pod content-pod">
+    <% if pod.url.present? and pod.name.present? %>
+      <h2><%= link_to(pod.name, pod.url, :class => 'title') %></h2>
+    <% else %>
+      <h2><div class="title"><%= pod.name %></div></h2>
+    <% end %>
+    <%= content_tag('div', raw(pod.body), :class => 'body') if pod.body.present? %>
+  </div>
+<% end %>

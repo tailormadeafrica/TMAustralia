@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+  <% site_bar = render('/refinery/site_bar', :head => true) -%>
+  <%= render '/refinery/head' %>
+  <div id="container">
+  
+
+
+    <%= site_bar -%>
+    <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+
+    <%= render '/refinery/header' -%>
+
+    <%= render '/shared/banner' %>
+
+    <% if action_name == "index" %>
+
+      <% if @activities.present? %>
+      <div id="welcome" class="search activities">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 div1">
+                <h1>Experiences</h1>
+                  <ul class=" list-inline list-unstyled">
+                    <% @activities.each do |activity| %>
+                      <li class="search-item">
+                        <%= link_to(image_fu(activity.image, "80x80#c", :alt => activity.image.alt_tag),refinery.activities_activity_path(activity)) if activity.image.present? %>
+                        <div class="search-item-body">
+                          <h3><%= link_to strip_tags(activity.name), refinery.activities_activity_path(activity) %></h3>
+                          <div class="description"><%=raw truncate(activity.description, :length => 120) %></div>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>   
+
+
+    <% else %>
+
+      <div id="welcome">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 div1 truncate_text">
+              <!--<p>-->
+                <%=raw @activity.description %>
+              <!--</p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% if @activity.locations.present? %>
+          <div id="welcome" class="locations search best top">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h1>Best Destinations <span>for <%= @activity.name %></span></h1>
+                  <ul class=" list-inline list-unstyled cf">
+                    <% @activity.locations.each do |location| %>
+                      <li class="search-item">
+                        <%= link_to(image_fu(location.cover_image, "105x80#c", :alt => location.cover_image.alt_tag),refinery.locations_location_path(location)) if location.cover_image.present? %>
+                        <div class="search-item-body">
+                          <h3><%= link_to strip_tags(location.name), refinery.locations_location_path(location) %></h3>
+                          <div class="description"><%=raw truncate(location.description, :length => 120) %></div>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>                 
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+      <%# if @activity.accommodations.present? %>
+        <!--<div id="welcome" class="locations search best bottom">-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--<div class="col-xs-12">-->
+                <!--<h1>Best Lodges <span>for <%#= @activity.name %></span></h1>-->
+                <!--<ul class=" list-inline list-unstyled cf">-->
+                  <!--<%# @activity.accommodations.each do |accommodation| %>-->
+                    <!--<%# if accommodation.is_valid? %>-->
+                      <!--<li class="search-item">    -->
+                        <!--<%#= link_to(image_fu(accommodation.cover_image, "105x80#c", :alt => accommodation.cover_image.alt_tag),refinery.accommodations_accommodation_path(accommodation)) if accommodation.cover_image.present? %>               -->
+                        <!--<div class="search-item-body">-->
+                          <!--<h3><%#= link_to strip_tags(accommodation.name), refinery.accommodations_accommodation_path(accommodation) %></h3>-->
+                          <!--<div class="description"><%#=raw truncate(accommodation.description, :length => 120) %></div>-->
+                        <!--</div>-->
+                      <!--</li>-->
+                    <!--<%# end %>-->
+                  <!--<%# end %>-->
+                <!--</ul>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <%# end %>
+
+
+    <% end %>
+
+    <%= render '/refinery/footer' -%>
+
+    <%= render '/refinery/javascripts' %>
+  </body>
+</html>

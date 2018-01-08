@@ -1,0 +1,16 @@
+<% if post.live? %>
+  <article class="blog_post" id="<%= dom_id(post) %>">
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="blog_post_pod">
+      <%= link_to(image_fu(post.image, '360x272#c', :class=>"img-responsive"), refinery.blog_post_path(post)) %>
+      <div class="caption cf">
+        <div class="title"><%= link_to post.title, refinery.blog_post_path(post) %></div>
+        <div class="date"><%= post.published_at.strftime('%B %e, %Y') %></div>
+        <div class="comment"><a><i class="fa fa-comment-o"></i><%= post.comments.count %></a></div>
+      </div>
+
+    </div>
+  </div>
+
+  </article>
+<% end %>

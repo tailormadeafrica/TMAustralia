@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><%=raw Refinery::Core.site_name %></title>
+</head>
+
+<body>
+
+<h3>Party Leader Contact Details</h3><br/>
+
+<table width="720">
+  <tr>
+    <td>Full Name</td>
+    <td><%= @booking.full_name %></td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td><%= @booking.email %></td>
+  </tr>
+  <tr>
+    <td>Telephone Number</td>
+    <td><%= @booking.telephone %></td>
+  </tr>
+  <tr>
+    <td>Cell Numaber</td>
+    <td><%= @booking.cellphone %></td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td><%= @booking.address %></td>
+  </tr>
+  <tr>
+    <td>Receive Newsletters</td>
+    <td><%= @booking.dont_get_newsletters %></td>
+  </tr>
+</table>
+<br>
+
+<% if @booking.passports.present? %>
+    <h3>Passenger & Passport Details</h3><br/>
+
+  <% @booking.passports.each do |passport| %>
+    <table width="720">
+      <tr>
+        <td>Title</td>
+        <td><%= passport.title %></td>
+        <td>Passport Number</td>
+        <td><%= passport.passport_no %></td>
+      </tr>
+      <tr>
+        <td>First Name</td>
+        <td><%= passport.first_name %></td>
+        <td>Place of Issue</td>
+        <td><%= passport.place_of_issue %></td>
+      </tr>
+      <tr>
+        <td>Surname</td>
+        <td><%= passport.surname %></td>
+        <td>Issue Date</td>
+        <td><%= passport.issue_date %></td>
+      </tr>
+      <tr>
+        <td>D.o.Birth</td>
+        <td><%= passport.date_of_birth %></td>
+        <td>Expiry Date</td>
+        <td><%= passport.expiry_date %></td>
+      </tr>
+      <tr>
+        <td>Weight(kgs)</td>
+        <td colspan="3"><%= passport.weight %></td>
+      </tr>
+      <tr>
+        <td>Diet Req</td>
+        <td colspan="3"><%= passport.diet_req %></td>
+      </tr>
+    </table><br/>
+  <% end %>
+<% end %>
+
+<% if @booking.flights.present? %>
+    <h3>International Flight Details</h3><br/>
+
+  <% @booking.flights.each do |flight| %>
+    <table width="720">
+      <tr>
+        <td>Airline & Flight Number</td>
+        <td colspan="3"><%= flight.airline_and_flight_no %></td>
+      </tr>
+      <tr>
+        <td>Departure Airport</td>
+        <td><%= flight.departure_airport %></td>
+        <td>Depart Time</td>
+        <td><%= flight.departure %></td>
+      </tr>
+      <tr>
+        <td>Arrival Airport</td>
+        <td><%= flight.arrival_airport %></td>
+        <td>Arrive Time</td>
+        <td><%= flight.arrival %></td>
+      </tr>
+    </table><br/>
+  <% end %>
+<% end %>
+
+<h3>Personal Travel Insurance</h3><br/>
+<table width="720">
+  <tr>
+    <td>Insurance Company</td>
+    <td><%= @booking.insurance_company %></td>
+  </tr>
+  <tr>
+    <td>Policy Number</td>
+    <td><%= @booking.policy_number %></td>
+  </tr>
+  <tr>
+    <td>Emergency Number</td>
+    <td><%= @booking.emergency_number %></td>
+  </tr>
+  <tr>
+    <td>Personal Insurance</td>
+    <td><%= @booking.certify_personal_insurance %></td>
+  </tr>
+</table><br/>
+
+<h3>Special Requests</h3><br/>
+<table width="720">
+  <tr>
+    <td>Honeymoon</td>
+    <td colspan="3"><%= @booking.honeymoon %></td>
+  </tr>
+  <tr>
+    <td>Birthday</td>
+    <td><%= @booking.birthday %></td>
+    <td>Birthday Who and When</td>
+    <td><%= @booking.birthday_who_and_when %></td>
+  </tr>
+  <tr>
+    <td>Anniversary</td>
+    <td><%= @booking.anniversary %><br/></td>
+    <td>Anniversary Who and When</td>
+    <td><%= @booking.anniversary_who_and_where %><br/></td>
+  </tr>
+</table><br/>
+
+<h3>Emergency Contact</h3><br/>
+<%= @booking.emergency_contacts %></td>
+
+
+
+<h3>Acceptance</h3><br/>
+<table width="720">
+  <tr>
+    <td>I Accept</td>
+    <td><%= @booking.i_accept %></td>
+  </tr>
+  <tr>
+    <td>I Accept Name</td>
+    <td><%= @booking.i_accept_name %></td>
+  </tr>
+</table><br/>
+
+<style>
+  h3{font-family: Arial, sans-serif;}
+  table, td {
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+</style>
+
+</body>
+</html>
