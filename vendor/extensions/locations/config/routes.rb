@@ -25,7 +25,7 @@ Refinery::Core::Engine.routes.append do
           end
         end
     end
-  end
+  end if defined?(::Refinery::Locations::Location)
 
   namespace :locations do
     resources :locations, :path => '', :only => [:index, :show]
