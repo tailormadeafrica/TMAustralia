@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171107145046) do
+ActiveRecord::Schema.define(:version => 20180322090836) do
 
   create_table "flights", :force => true do |t|
     t.string   "airline_and_flight_no"
@@ -307,14 +307,15 @@ ActiveRecord::Schema.define(:version => 20171107145046) do
     t.string   "email"
     t.string   "phone"
     t.text     "message"
-    t.boolean  "spam",        :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "spam",                 :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "budget"
     t.string   "destination"
     t.string   "from"
     t.boolean  "first_trip"
     t.string   "currency"
+    t.boolean  "except_communication"
   end
 
   add_index "refinery_inquiries_inquiries", ["id"], :name => "index_refinery_inquiries_inquiries_on_id"

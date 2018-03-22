@@ -101,6 +101,14 @@
     <% end %>
     <tr>
       <td>
+        <strong>I except communication</strong>
+      </td>
+      <td>
+        <%=  @inquiry.except_communication ? 'Yes': 'No' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <strong><%= t('.date') %></strong>
       </td>
       <td>
