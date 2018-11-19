@@ -49,6 +49,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'sass', '3.4.23'
 gem 'hitimes', '1.2.4'
 gem 'rake', '12.1.0'
+gem 'timers', '4.1.2'
 
 
 
